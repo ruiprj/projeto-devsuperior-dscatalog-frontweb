@@ -1,3 +1,4 @@
+import Navbar from 'components/Navbar';
 import './assets/styles/custom.scss';
 import './App.css';
 
@@ -5,7 +6,8 @@ import './App.css';
 const App = () => {
   return (
     <>
-      <h1>Hello DSCatalog</h1>
+      <Navbar />
+      
       <h1>Hello DSCatalog</h1>
     </>
   );
