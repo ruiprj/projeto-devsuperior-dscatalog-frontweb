@@ -1,10 +1,12 @@
 import { ReactComponent as ArrowIcon } from 'assets/images/arrow.svg';
 import ProductPrice from 'components/ProductPrice';
 
+import './styles.css';
+
 const ProductDetails = () => {
     return (
         <div className="product-details-container">
-            <div className="product-detaisl-card">
+            <div className="base-card  product-detaisl-card">
                 <div className="goback-container">
                     <ArrowIcon />
                     <h2>VOLTAR</h2>
