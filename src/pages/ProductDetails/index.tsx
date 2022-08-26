@@ -1,5 +1,5 @@
 import { ReactComponent as ArrowIcon } from 'assets/images/arrow.svg';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ProductPrice from 'components/ProductPrice';
 import { Product } from 'types/product';
 import axios from 'axios';
@@ -8,20 +8,25 @@ import { useEffect, useState } from 'react';
 import './styles.css';
 import { BASE_URL } from 'util/requests';
 
+type UrlParams = {
+    productId: string;
+}
+
 const ProductDetails = () => {
+
+    const { productId } = useParams<UrlParams>();
 
     const [product, setProduct] = useState<Product>();
     
     useEffect(() => {
 
-        axios.get(BASE_URL + '/products/1')
+        axios.get(`${BASE_URL}/products/${productId}`)
             .then(response => {
                 setProduct(response.data);
             });
 
-    }, []);
+    }, [productId]); // o useEffect oberva o valor em colchetes; qdo ele é aterado, o useEffect é chamado novamente
     
-
     return (
         <div className="product-details-container">
             <div className="base-card  product-details-card">
