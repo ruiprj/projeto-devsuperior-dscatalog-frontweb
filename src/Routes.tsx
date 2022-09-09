@@ -1,4 +1,4 @@
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { Router, Redirect, Route, Switch } from "react-router-dom";
 
 import Home from "pages/Home";
 import Navbar from "components/Navbar";
@@ -6,12 +6,13 @@ import Catalog from "pages/Catalog";
 import Admin from "pages/Admin";
 import ProductDetails from "pages/ProductDetails";
 import Auth from "pages/Admin/Auth";
+import history from "util/history";
 
 
 const Routes = () => {
 
     return (
-        <BrowserRouter>
+        <Router history={ history }>
             <Navbar/>
 
             <Switch>
@@ -37,7 +38,7 @@ const Routes = () => {
                     <Admin />
                 </Route>
             </Switch>
-        </BrowserRouter>
+        </Router>
     );
 
 }
