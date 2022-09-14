@@ -110,3 +110,20 @@ export const isAuthenticated = () : boolean => {
     return (tokenData && tokenData.exp * 1000 > Date.now()) ? true : false;
 };
 
+export const hasAnyRoles = (roles: Role[]) : boolean => {
+    if (roles.length === 0) {
+        return true;
+        // return false;
+    }
+
+    const tokenData = getTokenData();
+    if (tokenData !== undefined) {
+        for (let i = 0; i < roles.length; i++) {
+            if (tokenData.authorities.includes(roles[i])) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
