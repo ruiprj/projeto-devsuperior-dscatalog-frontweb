@@ -9,9 +9,10 @@ import { requestBackend } from 'util/requests';
 
 type Props = {
   product: Product;
+  onDelete: Function;
 };
 
-const ProductCrudCard = ({ product }: Props) => {
+const ProductCrudCard = ({ product, onDelete }: Props) => {
   const handleDelete = (productId: number) => {
 
     if (!window.confirm("Tem certeza que deseja deletar?")) {
@@ -25,7 +26,7 @@ const ProductCrudCard = ({ product }: Props) => {
     };
 
     requestBackend(config).then(() => {
-      console.log('DELETADO ID ' + productId);
+      onDelete();
     });
 
   };
@@ -52,8 +53,9 @@ const ProductCrudCard = ({ product }: Props) => {
       <div className="product-crud-card-buttons-container">
         <button
           onClick={() => handleDelete(product.id)} 
-          className="btn  btn-outline-danger  product-crud-card-button  product-crud-card-button-first">
-            EXCLUIR
+          className="btn  btn-outline-danger  product-crud-card-button  product-crud-card-button-first"
+        >
+          EXCLUIR
         </button>
 
         <Link to={`/admin/products/${product.id}`}>
