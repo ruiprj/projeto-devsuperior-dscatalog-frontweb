@@ -42,22 +42,26 @@ const Catalog = () => {
       </div>
 
       <div className="row">
-
-        {isLoading ? <CardLoader /> : (
-          page?.content.map(product => {
-          return (
-            <div className="col-sm-6  col-lg-4  col-xl-3" key={product.id} >
-              <Link to="/products/1">
-                <ProductCard product={product} />
-              </Link>
-            </div>
-          );
-        }))}
-
+        {isLoading ? (
+          <CardLoader />
+        ) : (
+          page?.content.map((product) => {
+            return (
+              <div className="col-sm-6  col-lg-4  col-xl-3" key={product.id}>
+                <Link to="/products/1">
+                  <ProductCard product={product} />
+                </Link>
+              </div>
+            );
+          })
+        )}
       </div>
 
       <div className="row">
-        <Pagination />
+        <Pagination 
+          pageCount={page ? page.totalPages : 0} 
+          range={3} 
+        />
       </div>
     </div>
   );
