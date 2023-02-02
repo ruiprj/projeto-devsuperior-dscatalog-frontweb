@@ -1,3 +1,4 @@
+import { ReactComponent as SearchIcon } from 'assets/images/search-icon.svg';
 
 import './styles.css';
 
@@ -10,8 +11,11 @@ const ProductFilter = () => {
                 <div className="product-filter-name-container">
                     <input 
                         type="text" 
-                        className="form-control"
+                        className="form-control" 
+                        placeholder="Nome do produto"
                     />
+
+                    <SearchIcon />
                 </div>
 
                 <div className="product-filter-bottom-container">
