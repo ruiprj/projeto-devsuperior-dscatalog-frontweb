@@ -93,7 +93,7 @@ const Form = () => {
                     })}
                     type="text"
                     className={`form-control  base-input  ${errors.name ? 'is-invalid': ''}`}
-                    placeholder="Nome do Produto"
+                    placeholder="Nome do produto"
                     name="name"
                 />
                 <div className="invalid-feedback  d-block">{errors.name?.message}</div>
