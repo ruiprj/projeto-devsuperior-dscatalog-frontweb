@@ -33,7 +33,7 @@ a, a:hover {
     color: #263238;
     height: 50px;
 
-    background-color: #fff;
+    background-color: unset;
 }
 
 .base-input::placeholder {
