@@ -16,5 +16,6 @@ test('ButttonIcon should render button with given test', () => {
 
     // ASSERT (usar as queries do Testing Library)
     expect(screen.getByText(text)).toBeInTheDocument();
+    expect(screen.getByTestId("arrow")).toBeInTheDocument();
 
 });
