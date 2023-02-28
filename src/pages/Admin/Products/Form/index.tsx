@@ -118,6 +118,7 @@ const Form = () => {
                       isMulti
                       getOptionLabel={(category: Category) => category.name}
                       getOptionValue={(category: Category) => String(category.id)}
+                      placeholder="Selecione..."
                     />
                   )}
                 />
