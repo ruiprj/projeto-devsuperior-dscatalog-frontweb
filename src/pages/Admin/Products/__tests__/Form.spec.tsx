@@ -3,6 +3,12 @@ import Form from '../Form';
 import history from 'util/history';
 import { Router, useParams } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
+import { server } from './fixtures';
+import selectEvent from 'react-select-event';
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -10,14 +16,13 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe('Product form create tests', () => {
-
   beforeEach(() => {
     (useParams as jest.Mock).mockReturnValue({
         productId: 'create'
     })
   });
 
-  test('should render Form', () => {
+  test('should render Form', async () => {
     render(
       // o Router no teste é obrigatório pois existe um Switch dentro do Form -> o Switch deve estar dentro de um Router durante um teste
       <Router history={history}>
@@ -35,6 +40,7 @@ describe('Product form create tests', () => {
     userEvent.type(priceInput, '5000.12');
     userEvent.type(imgUrlInput, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg');
     userEvent.type(descriptionInput, 'Computador legalzão');
-    // userEvent.type(categoriesInput, 'Computador');
+    
+    await selectEvent.select(categoriesInput, ['Eletrônicos', 'Computadores']);
   });
 });
