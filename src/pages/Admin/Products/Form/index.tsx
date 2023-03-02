@@ -102,6 +102,7 @@ const Form = () => {
                     className={`form-control  base-input  ${errors.name ? 'is-invalid': ''}`}
                     placeholder="Nome do produto"
                     name="name"
+                    data-testid="name"
                 />
                 <div className="invalid-feedback  d-block">{errors.name?.message}</div>
               </div>
@@ -141,6 +142,7 @@ const Form = () => {
                       disableGroupSeparators={ true }
                       value={ field.value }
                       onValueChange={ field.onChange }
+                      data-testid="price"
                     />
                   )}
                 />
@@ -161,6 +163,7 @@ const Form = () => {
                     className={`form-control  base-input  ${errors.name ? 'is-invalid': ''}`}
                     placeholder="URL da imagem do produto"
                     name="imgUrl"
+                    data-testid="imgUrl"
                 />
                 <div className="invalid-feedback  d-block">{errors.imgUrl?.message}</div>
               </div>
@@ -176,6 +179,7 @@ const Form = () => {
                     className={`form-control  base-input  h-auto  ${errors.description ? 'is-invalid': ''}`}
                     placeholder="Descrição"
                     name="description"
+                    data-testid="description"
                 />
                 <div className="invalid-feedback  d-block">{errors.description?.message}</div>
               </div>
