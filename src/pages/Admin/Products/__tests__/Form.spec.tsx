@@ -36,11 +36,14 @@ describe('Product form create tests', () => {
     const descriptionInput = screen.getByTestId("description");
     const categoriesInput = screen.getByLabelText("Categorias");
 
+    const submitButton = screen.getByRole('button', { name: /salvar/i }); // '/text/i' ignora maiúsculas/minúsculas
+
+    await selectEvent.select(categoriesInput, ['Eletrônicos', 'Computadores']);
     userEvent.type(nameInput, 'Computador');
     userEvent.type(priceInput, '5000.12');
     userEvent.type(imgUrlInput, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg');
     userEvent.type(descriptionInput, 'Computador legalzão');
-    
-    await selectEvent.select(categoriesInput, ['Eletrônicos', 'Computadores']);
+
+    userEvent.click(submitButton);
   });
 });
