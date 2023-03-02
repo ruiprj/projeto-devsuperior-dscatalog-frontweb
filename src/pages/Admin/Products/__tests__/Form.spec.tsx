@@ -28,5 +28,6 @@ describe('Product form create tests', () => {
     const priceInput = screen.getByTestId("price");
     const imgUrlInput = screen.getByTestId("imgUrl");
     const descriptionInput = screen.getByTestId("description");
+    const categoriesInput = screen.getByLabelText("Categorias");
   });
 });

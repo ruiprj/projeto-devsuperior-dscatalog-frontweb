@@ -108,6 +108,7 @@ const Form = () => {
               </div>
 
               <div className="margin-bottom-30">
+                <label htmlFor="categories" className="d-none" >Categorias</label>
                 <Controller 
                   name="categories"
                   rules={{ required: true }}
@@ -120,6 +121,7 @@ const Form = () => {
                       getOptionLabel={(category: Category) => category.name}
                       getOptionValue={(category: Category) => String(category.id)}
                       placeholder="Selecione..."
+                      inputId="categories"
                     />
                   )}
                 />
