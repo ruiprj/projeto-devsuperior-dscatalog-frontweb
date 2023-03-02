@@ -52,5 +52,7 @@ describe('Product form create tests', () => {
       const toastElement = screen.getByText('Produto cadastrado com sucesso!');
       expect(toastElement).toBeInTheDocument();
     });
+
+    expect(history.location.pathname).toEqual('/admin/products');
   });
 });
