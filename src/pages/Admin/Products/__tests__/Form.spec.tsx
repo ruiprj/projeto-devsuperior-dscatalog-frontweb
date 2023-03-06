@@ -23,7 +23,7 @@ describe('Product form create tests', () => {
     })
   });
 
-  test('should render Form', async () => {
+  test('should show toasty and redirect when submit form correctly', async () => {
     render(
       // o Router no teste é obrigatório pois existe um Switch dentro do Form -> o Switch deve estar dentro de um Router durante um teste
       <Router history={history}>
@@ -54,5 +54,23 @@ describe('Product form create tests', () => {
     });
 
     expect(history.location.pathname).toEqual('/admin/products');
+  });
+
+  test('should show 5 validation messages when just clicking submit', async () => {
+    render(
+      // o Router no teste é obrigatório pois existe um Switch dentro do Form -> o Switch deve estar dentro de um Router durante um teste
+      <Router history={history}>
+        <Form />
+      </Router>
+    );
+
+    const submitButton = screen.getByRole('button', { name: /salvar/i }); // '/text/i' ignora maiúsculas/minúsculas
+
+    userEvent.click(submitButton);
+
+    await waitFor(() => {
+      const messages = screen.getAllByText('Campo obrigatório');
+      expect(messages).toHaveLength(5);
+    });
   });
 });
