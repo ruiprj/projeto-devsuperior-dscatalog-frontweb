@@ -132,11 +132,16 @@ describe('Product form update tests', () => {
     //   const priceInput = screen.getByTestId("price");
     //   const imgUrlInput = screen.getByTestId("imgUrl");
     //   const descriptionInput = screen.getByTestId("description");
-  
+    // 
+    //   const formElement = screen.getByTestId("form");
+    // 
     //   expect(nameInput).toHaveValue(productResponse.name);
     //   expect(priceInput).toHaveValue(String(productResponse.price));
     //   expect(imgUrlInput).toHaveValue(productResponse.imgUrl);
     //   expect(descriptionInput).toHaveValue(productResponse.description);
+    // 
+    //   const ids = productResponse.categories.map(x => String(x.id));
+    //   expect(formElement).toHaveFormValues({ categories: ids });
     // });
 
     // correto, segundo eslint e documentação
@@ -158,6 +163,13 @@ describe('Product form update tests', () => {
     await waitFor(() => {
       const descriptionInput = screen.getByTestId("description");
       expect(descriptionInput).toHaveValue(productResponse.description);
+    });
+
+    await waitFor(() => {
+      const formElement = screen.getByTestId("form");
+
+      const ids = productResponse.categories.map(x => String(x.id));
+      expect(formElement).toHaveFormValues({ categories: ids });
     });
     
     
